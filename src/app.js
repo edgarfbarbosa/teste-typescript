@@ -49,10 +49,12 @@ const students = [
     },
 ];
 //  - A média de idade dos alunos
-console.log('Exemplo: ' + (students[0].age + students[1].age + students[2].age) / 3);
 let total = 0;
-students.forEach((student, i) => {
-    console.log(i, student.age);
-    console.log(total += student.age);
+students.forEach((student) => {
+    total += student.age;
 });
-console.log(total / students.length);
+console.log('A média de idade dos alunos: ' + total / students.length);
+//  - A porcentagem de alunos acima de 21 anos
+const studentsOver21 = students.filter(student => student.age > 21);
+const studentsOver21Perc = (studentsOver21.length * 100 / students.length).toFixed(2);
+console.log('A porcentagem de alunos acima de 21 anos: ' + studentsOver21Perc + '%');
