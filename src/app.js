@@ -48,6 +48,18 @@ const students = [
         hobbies: ['Reading', 'Gaming'],
     },
 ];
+//  - Uma lista contendo a cidade e quantos alunos são dessa cidade
+const listOfCities = students.map(student => student.city);
+const newListOfCities = [];
+listOfCities.forEach(function (city) {
+    if (!newListOfCities.includes(city)) {
+        newListOfCities.push(city);
+    }
+});
+console.log(newListOfCities);
+for (var i = 0; i < newListOfCities.length; i++) {
+    console.log(newListOfCities[i]);
+}
 //  - A média de idade dos alunos
 let total = 0;
 students.forEach((student) => {
