@@ -96,32 +96,71 @@ console.log('A porcentagem de alunos acima de 21 anos: ' + studentsOver21Perc + 
 
 //  - Uma lista de clubes baseados nos interesses dos alunos (ex: Leitura, Jogos, Dança) contendo todos os alunos com o interesse em comum.
 
-const listOfClubs1 = students.map(function (student) {
-    return student.hobbies[0]
-})
-
-console.log(listOfClubs1)
-
-const listOfClubs2 = students.map(function (student) {
-    return student.hobbies[1]
-})
-
-console.log(listOfClubs2)
-
-const newListOfClubs: string[] = []
-
-listOfClubs1.forEach(function (hobbies) {
-    if (!newListOfClubs.includes(hobbies)) {
-        newListOfClubs.push(hobbies)
-    }
-})
-
-listOfClubs2.forEach(function (hobbies) {
-    if (!newListOfClubs.includes(hobbies)) {
-        newListOfClubs.push(hobbies)
-    }
-})
-
-for (var i = 0; i < newListOfClubs.length; i++) {
-    console.log(newListOfClubs[i])
+interface ListOfClubs {
+    hobbie: string,
+    students: () => Student[]
 }
+
+const hobbieSinging = {
+    hobbie: 'Singing',
+    students: () => {
+        return students.filter((student) => {
+            return student.hobbies.some(hobbie => hobbie === 'Singing')
+        })
+    }
+}
+
+const hobbieReading = {
+    hobbie: 'Reading',
+    students: () => {
+        return students.filter((student) => {
+            return student.hobbies.some(hobbie => hobbie === 'Reading')
+        })
+    }
+}
+
+const hobbieCoding = {
+    hobbie: 'Coding',
+    students: () => {
+        return students.filter((student) => {
+            return student.hobbies.some(hobbie => hobbie === 'Coding')
+        })
+    }
+}
+
+const hobbieDancing = {
+    hobbie: 'Dancing',
+    students: () => {
+        return students.filter((student) => {
+            return student.hobbies.some(hobbie => hobbie === 'Dancing')
+        })
+    }
+}
+
+const hobbieWriting = {
+    hobbie: 'Writing',
+    students: () => {
+        return students.filter((student) => {
+            return student.hobbies.some(hobbie => hobbie === 'Writing')
+        })
+    }
+}
+
+const hobbieGaming = {
+    hobbie: 'Gaming',
+    students: () => {
+        return students.filter((student) => {
+            return student.hobbies.some(hobbie => hobbie === 'Gaming')
+        })
+    }
+}
+
+const listOfClubs: ListOfClubs[] = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming]
+
+listOfClubs.forEach(function (club) {
+    console.log('Clube: ' + club.hobbie)
+
+    club.students().forEach(student => {
+        console.log('Aluno interessado neste clube: ' + student.name)
+    })
+})
