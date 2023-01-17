@@ -115,18 +115,18 @@ listOfCitiesAndStudents.forEach(function (city) {
 //  - A média de idade dos alunos
 
 function averageAgeOfStudents(): string {
-    let total = 0
+    let total: number = 0
 
     students.forEach((student) => {
         total += student.age
     })
 
-    const layout = `
+    const layout: string = `
     <h1>Este é o resultado da média de idade dos alunos:</h1>
     <p>A média de idade dos alunos é ${total / students.length}
     `
 
-    const result = document.getElementById('result')
+    const result = document.getElementById('result') as HTMLElement
 
     result.innerHTML = layout
 
