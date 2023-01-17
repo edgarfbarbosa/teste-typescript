@@ -135,9 +135,20 @@ function averageAgeOfStudents(): string {
 
 //  - A porcentagem de alunos acima de 21 anos
 
-const studentsOver21 = students.filter(student => student.age > 21)
-const studentsOver21Perc = (studentsOver21.length * 100 / students.length).toFixed(2)
-console.log('A porcentagem de alunos acima de 21 anos: ' + studentsOver21Perc + '%')
+function studentsOver21Percent(): string {
+    const studentsOver21 = students.filter(student => student.age > 21)
+
+    const layout: string = `
+    <h1>A porcentagem de alunos acima de 21 anos:</h1>
+    <p>A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}%
+    `
+
+    const result = document.getElementById('result') as HTMLElement
+
+    result.innerHTML = layout
+
+    return layout
+}
 
 //  - Uma lista de clubes baseados nos interesses dos alunos (ex: Leitura, Jogos, Dança) contendo todos os alunos com o interesse em comum.
 

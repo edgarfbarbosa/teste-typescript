@@ -101,9 +101,16 @@ function averageAgeOfStudents() {
     return layout;
 }
 //  - A porcentagem de alunos acima de 21 anos
-const studentsOver21 = students.filter(student => student.age > 21);
-const studentsOver21Perc = (studentsOver21.length * 100 / students.length).toFixed(2);
-console.log('A porcentagem de alunos acima de 21 anos: ' + studentsOver21Perc + '%');
+function studentsOver21Percent() {
+    const studentsOver21 = students.filter(student => student.age > 21);
+    const layout = `
+    <h1>A porcentagem de alunos acima de 21 anos:</h1>
+    <p>A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}%
+    `;
+    const result = document.getElementById('result');
+    result.innerHTML = layout;
+    return layout;
+}
 const hobbieSinging = {
     hobbie: 'Singing',
     students: () => {
