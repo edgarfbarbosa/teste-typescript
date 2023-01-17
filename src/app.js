@@ -87,11 +87,19 @@ listOfCitiesAndStudents.forEach(function (city) {
     console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`);
 });
 //  - A média de idade dos alunos
-let total = 0;
-students.forEach((student) => {
-    total += student.age;
-});
-console.log('A média de idade dos alunos: ' + total / students.length);
+function averageAgeOfStudents() {
+    let total = 0;
+    students.forEach((student) => {
+        total += student.age;
+    });
+    const layout = `
+    <h1>Este é o resultado da média de idade dos alunos:</h1>
+    <p>A média de idade dos alunos é ${total / students.length}
+    `;
+    const result = document.getElementById('result');
+    result.innerHTML = layout;
+    return layout;
+}
 //  - A porcentagem de alunos acima de 21 anos
 const studentsOver21 = students.filter(student => student.age > 21);
 const studentsOver21Perc = (studentsOver21.length * 100 / students.length).toFixed(2);

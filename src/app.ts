@@ -114,13 +114,24 @@ listOfCitiesAndStudents.forEach(function (city) {
 
 //  - A média de idade dos alunos
 
-let total = 0
+function averageAgeOfStudents(): string {
+    let total = 0
 
-students.forEach((student) => {
-    total += student.age
-})
+    students.forEach((student) => {
+        total += student.age
+    })
 
-console.log('A média de idade dos alunos: ' + total / students.length)
+    const layout = `
+    <h1>Este é o resultado da média de idade dos alunos:</h1>
+    <p>A média de idade dos alunos é ${total / students.length}
+    `
+
+    const result = document.getElementById('result')
+
+    result.innerHTML = layout
+
+    return layout
+}
 
 //  - A porcentagem de alunos acima de 21 anos
 
