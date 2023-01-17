@@ -62,21 +62,55 @@ const students: Student[] = [
 
 //  - Uma lista contendo a cidade e quantos alunos são dessa cidade
 
-const listOfCities = students.map(student => student.city)
-
-const newListOfCities: string[] = []
-
-listOfCities.forEach(function (city) {
-    if (!newListOfCities.includes(city)) {
-        newListOfCities.push(city)
-    }
-})
-
-console.log(newListOfCities)
-
-for (var i = 0; i < newListOfCities.length; i++) {
-    console.log(newListOfCities[i])
+interface CityProps {
+    city: string,
+    students: () => Student[]
 }
+
+const cityNewYork: CityProps = {
+    city: 'New York',
+    students: () => {
+        return students.filter((student) => {
+            if (student.city === 'New York') {
+                return student
+            }
+        })
+    }
+}
+
+const cityLosAngeles: CityProps = {
+    city: 'Los Angeles',
+    students: () => {
+        return students.filter((student) => {
+            if (student.city === 'Los Angeles') {
+                return student
+            }
+        })
+    }
+}
+
+const cityChicago: CityProps = {
+    city: 'Chicago',
+    students: () => {
+        return students.filter((student) => {
+            if (student.city === 'Chicago') {
+                return student
+            }
+        })
+    }
+}
+
+const listOfCitiesAndStudents: CityProps[] = [cityNewYork, cityLosAngeles, cityChicago]
+
+listOfCitiesAndStudents.forEach(function (city) {
+    console.log('Cidade: ' + city.city)
+
+    city.students().forEach(student => {
+        console.log('Alunos que moram nesta cidade: ' + student.name)
+    })
+
+    console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`)
+})
 
 //  - A média de idade dos alunos
 
