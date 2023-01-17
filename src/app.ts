@@ -96,12 +96,12 @@ console.log('A porcentagem de alunos acima de 21 anos: ' + studentsOver21Perc + 
 
 //  - Uma lista de clubes baseados nos interesses dos alunos (ex: Leitura, Jogos, Dança) contendo todos os alunos com o interesse em comum.
 
-interface ListOfClubs {
+interface ClubProps {
     hobbie: string,
     students: () => Student[]
 }
 
-const hobbieSinging = {
+const hobbieSinging: ClubProps = {
     hobbie: 'Singing',
     students: () => {
         return students.filter((student) => {
@@ -110,7 +110,7 @@ const hobbieSinging = {
     }
 }
 
-const hobbieReading = {
+const hobbieReading: ClubProps = {
     hobbie: 'Reading',
     students: () => {
         return students.filter((student) => {
@@ -119,7 +119,7 @@ const hobbieReading = {
     }
 }
 
-const hobbieCoding = {
+const hobbieCoding: ClubProps = {
     hobbie: 'Coding',
     students: () => {
         return students.filter((student) => {
@@ -128,7 +128,7 @@ const hobbieCoding = {
     }
 }
 
-const hobbieDancing = {
+const hobbieDancing: ClubProps = {
     hobbie: 'Dancing',
     students: () => {
         return students.filter((student) => {
@@ -137,7 +137,7 @@ const hobbieDancing = {
     }
 }
 
-const hobbieWriting = {
+const hobbieWriting: ClubProps = {
     hobbie: 'Writing',
     students: () => {
         return students.filter((student) => {
@@ -146,7 +146,7 @@ const hobbieWriting = {
     }
 }
 
-const hobbieGaming = {
+const hobbieGaming: ClubProps = {
     hobbie: 'Gaming',
     students: () => {
         return students.filter((student) => {
@@ -155,7 +155,7 @@ const hobbieGaming = {
     }
 }
 
-const listOfClubs: ListOfClubs[] = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming]
+const listOfClubs: ClubProps[] = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming]
 
 listOfClubs.forEach(function (club) {
     console.log('Clube: ' + club.hobbie)
