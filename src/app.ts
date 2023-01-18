@@ -67,50 +67,64 @@ interface CityProps {
     students: () => Student[]
 }
 
-const cityNewYork: CityProps = {
-    city: 'New York',
-    students: () => {
-        return students.filter((student) => {
-            if (student.city === 'New York') {
-                return student
-            }
-        })
+function listOfCitiesAndNumberOfStudents(): string {
+    const cityNewYork: CityProps = {
+        city: 'New York',
+        students: () => {
+            return students.filter((student) => {
+                if (student.city === 'New York') {
+                    return student
+                }
+            })
+        }
     }
-}
 
-const cityLosAngeles: CityProps = {
-    city: 'Los Angeles',
-    students: () => {
-        return students.filter((student) => {
-            if (student.city === 'Los Angeles') {
-                return student
-            }
-        })
+    const cityLosAngeles: CityProps = {
+        city: 'Los Angeles',
+        students: () => {
+            return students.filter((student) => {
+                if (student.city === 'Los Angeles') {
+                    return student
+                }
+            })
+        }
     }
-}
 
-const cityChicago: CityProps = {
-    city: 'Chicago',
-    students: () => {
-        return students.filter((student) => {
-            if (student.city === 'Chicago') {
-                return student
-            }
-        })
+    const cityChicago: CityProps = {
+        city: 'Chicago',
+        students: () => {
+            return students.filter((student) => {
+                if (student.city === 'Chicago') {
+                    return student
+                }
+            })
+        }
     }
-}
 
-const listOfCitiesAndStudents: CityProps[] = [cityNewYork, cityLosAngeles, cityChicago]
+    const listOfCitiesAndStudents: CityProps[] = [cityNewYork, cityLosAngeles, cityChicago]
 
-listOfCitiesAndStudents.forEach(function (city) {
-    console.log('Cidade: ' + city.city)
+    let layout: string = ``
 
-    city.students().forEach(student => {
-        console.log('Alunos que moram nesta cidade: ' + student.name)
+    listOfCitiesAndStudents.forEach(function (city) {
+        layout += `<h1>Cidade: ${city.city}</h1>`
+
+        // console.log('Cidade: ' + city.city)
+
+        // city.students().forEach(student => {
+        //     layout += `<p>Alunos que moram nesta cidade: ${student.name}</p>`
+        // })
+
+        // console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`)
+
+        layout += `<p>Na cidade ${city.city} tem ${city.students().length} alunos.</p>`
     })
 
-    console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`)
-})
+    const result = document.getElementById('result') as HTMLElement
+
+    result.innerHTML = layout
+
+    return layout
+}
 
 //  - A média de idade dos alunos
 
@@ -122,8 +136,8 @@ function averageAgeOfStudents(): string {
     })
 
     const layout: string = `
-    <h1>Este é o resultado da média de idade dos alunos:</h1>
-    <p>A média de idade dos alunos é ${total / students.length}
+    <h1> Este é o resultado da média de idade dos alunos: </h1>
+    <p> A média de idade dos alunos é ${total / students.length} </p>
     `
 
     const result = document.getElementById('result') as HTMLElement
@@ -139,8 +153,8 @@ function studentsOver21Percent(): string {
     const studentsOver21 = students.filter(student => student.age > 21)
 
     const layout: string = `
-    <h1>A porcentagem de alunos acima de 21 anos:</h1>
-    <p>A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}%
+    <h1> A porcentagem de alunos acima de 21 anos: </h1>
+    <p> A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}% </p>
     `
 
     const result = document.getElementById('result') as HTMLElement

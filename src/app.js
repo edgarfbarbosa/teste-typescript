@@ -48,44 +48,52 @@ const students = [
         hobbies: ['Reading', 'Gaming'],
     },
 ];
-const cityNewYork = {
-    city: 'New York',
-    students: () => {
-        return students.filter((student) => {
-            if (student.city === 'New York') {
-                return student;
-            }
-        });
-    }
-};
-const cityLosAngeles = {
-    city: 'Los Angeles',
-    students: () => {
-        return students.filter((student) => {
-            if (student.city === 'Los Angeles') {
-                return student;
-            }
-        });
-    }
-};
-const cityChicago = {
-    city: 'Chicago',
-    students: () => {
-        return students.filter((student) => {
-            if (student.city === 'Chicago') {
-                return student;
-            }
-        });
-    }
-};
-const listOfCitiesAndStudents = [cityNewYork, cityLosAngeles, cityChicago];
-listOfCitiesAndStudents.forEach(function (city) {
-    console.log('Cidade: ' + city.city);
-    city.students().forEach(student => {
-        console.log('Alunos que moram nesta cidade: ' + student.name);
+function listOfCitiesAndNumberOfStudents() {
+    const cityNewYork = {
+        city: 'New York',
+        students: () => {
+            return students.filter((student) => {
+                if (student.city === 'New York') {
+                    return student;
+                }
+            });
+        }
+    };
+    const cityLosAngeles = {
+        city: 'Los Angeles',
+        students: () => {
+            return students.filter((student) => {
+                if (student.city === 'Los Angeles') {
+                    return student;
+                }
+            });
+        }
+    };
+    const cityChicago = {
+        city: 'Chicago',
+        students: () => {
+            return students.filter((student) => {
+                if (student.city === 'Chicago') {
+                    return student;
+                }
+            });
+        }
+    };
+    const listOfCitiesAndStudents = [cityNewYork, cityLosAngeles, cityChicago];
+    let layout = ``;
+    listOfCitiesAndStudents.forEach(function (city) {
+        layout += `<h1>Cidade: ${city.city}</h1>`;
+        // console.log('Cidade: ' + city.city)
+        // city.students().forEach(student => {
+        //     layout += `<p>Alunos que moram nesta cidade: ${student.name}</p>`
+        // })
+        // console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`)
+        layout += `<p>Na cidade ${city.city} tem ${city.students().length} alunos.</p>`;
     });
-    console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`);
-});
+    const result = document.getElementById('result');
+    result.innerHTML = layout;
+    return layout;
+}
 //  - A média de idade dos alunos
 function averageAgeOfStudents() {
     let total = 0;
@@ -93,8 +101,8 @@ function averageAgeOfStudents() {
         total += student.age;
     });
     const layout = `
-    <h1>Este é o resultado da média de idade dos alunos:</h1>
-    <p>A média de idade dos alunos é ${total / students.length}
+    <h1> Este é o resultado da média de idade dos alunos: </h1>
+    <p> A média de idade dos alunos é ${total / students.length} </p>
     `;
     const result = document.getElementById('result');
     result.innerHTML = layout;
@@ -104,8 +112,8 @@ function averageAgeOfStudents() {
 function studentsOver21Percent() {
     const studentsOver21 = students.filter(student => student.age > 21);
     const layout = `
-    <h1>A porcentagem de alunos acima de 21 anos:</h1>
-    <p>A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}%
+    <h1> A porcentagem de alunos acima de 21 anos: </h1>
+    <p> A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}% </p>
     `;
     const result = document.getElementById('result');
     result.innerHTML = layout;
