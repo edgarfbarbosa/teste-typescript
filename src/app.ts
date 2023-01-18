@@ -171,66 +171,76 @@ interface ClubProps {
     students: () => Student[]
 }
 
-const hobbieSinging: ClubProps = {
-    hobbie: 'Singing',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Singing')
-        })
+function listOfHobbies(): string {
+    const hobbieSinging: ClubProps = {
+        hobbie: 'Singing',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Singing')
+            })
+        }
     }
-}
 
-const hobbieReading: ClubProps = {
-    hobbie: 'Reading',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Reading')
-        })
+    const hobbieReading: ClubProps = {
+        hobbie: 'Reading',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Reading')
+            })
+        }
     }
-}
 
-const hobbieCoding: ClubProps = {
-    hobbie: 'Coding',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Coding')
-        })
+    const hobbieCoding: ClubProps = {
+        hobbie: 'Coding',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Coding')
+            })
+        }
     }
-}
 
-const hobbieDancing: ClubProps = {
-    hobbie: 'Dancing',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Dancing')
-        })
+    const hobbieDancing: ClubProps = {
+        hobbie: 'Dancing',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Dancing')
+            })
+        }
     }
-}
 
-const hobbieWriting: ClubProps = {
-    hobbie: 'Writing',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Writing')
-        })
+    const hobbieWriting: ClubProps = {
+        hobbie: 'Writing',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Writing')
+            })
+        }
     }
-}
 
-const hobbieGaming: ClubProps = {
-    hobbie: 'Gaming',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Gaming')
-        })
+    const hobbieGaming: ClubProps = {
+        hobbie: 'Gaming',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Gaming')
+            })
+        }
     }
-}
 
-const listOfClubs: ClubProps[] = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming]
+    const listOfClubs: ClubProps[] = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming]
 
-listOfClubs.forEach(function (club) {
-    console.log('Clube: ' + club.hobbie)
+    let layout: string = ``
 
-    club.students().forEach(student => {
-        console.log('Aluno interessado neste clube: ' + student.name)
+    listOfClubs.forEach(function (club) {
+        layout += `<h1>Clube: ${club.hobbie}</h1>`
+        layout += `<p><b>Lista de alunos interessados:</b></p>`
+        club.students().forEach(student => {
+            layout += `<p>${student.name}</p>            `
+        })
     })
-})
+
+    const result = document.getElementById('result') as HTMLElement
+
+    result.innerHTML = layout
+
+    return layout
+}

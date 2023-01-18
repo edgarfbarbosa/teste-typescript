@@ -119,58 +119,65 @@ function studentsOver21Percent() {
     result.innerHTML = layout;
     return layout;
 }
-const hobbieSinging = {
-    hobbie: 'Singing',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Singing');
+function listOfHobbies() {
+    const hobbieSinging = {
+        hobbie: 'Singing',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Singing');
+            });
+        }
+    };
+    const hobbieReading = {
+        hobbie: 'Reading',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Reading');
+            });
+        }
+    };
+    const hobbieCoding = {
+        hobbie: 'Coding',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Coding');
+            });
+        }
+    };
+    const hobbieDancing = {
+        hobbie: 'Dancing',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Dancing');
+            });
+        }
+    };
+    const hobbieWriting = {
+        hobbie: 'Writing',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Writing');
+            });
+        }
+    };
+    const hobbieGaming = {
+        hobbie: 'Gaming',
+        students: () => {
+            return students.filter((student) => {
+                return student.hobbies.some(hobbie => hobbie === 'Gaming');
+            });
+        }
+    };
+    const listOfClubs = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming];
+    let layout = ``;
+    listOfClubs.forEach(function (club) {
+        layout += `<h1>Clube: ${club.hobbie}</h1>`;
+        layout += `<p><b>Lista de alunos interessados:</b></p>`;
+        club.students().forEach(student => {
+            layout += `<p>${student.name}</p>            `;
         });
-    }
-};
-const hobbieReading = {
-    hobbie: 'Reading',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Reading');
-        });
-    }
-};
-const hobbieCoding = {
-    hobbie: 'Coding',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Coding');
-        });
-    }
-};
-const hobbieDancing = {
-    hobbie: 'Dancing',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Dancing');
-        });
-    }
-};
-const hobbieWriting = {
-    hobbie: 'Writing',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Writing');
-        });
-    }
-};
-const hobbieGaming = {
-    hobbie: 'Gaming',
-    students: () => {
-        return students.filter((student) => {
-            return student.hobbies.some(hobbie => hobbie === 'Gaming');
-        });
-    }
-};
-const listOfClubs = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming];
-listOfClubs.forEach(function (club) {
-    console.log('Clube: ' + club.hobbie);
-    club.students().forEach(student => {
-        console.log('Aluno interessado neste clube: ' + student.name);
     });
-});
+    const result = document.getElementById('result');
+    result.innerHTML = layout;
+    return layout;
+}
