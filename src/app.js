@@ -79,41 +79,33 @@ function listOfCitiesAndNumberOfStudents() {
             });
         }
     };
-    const listOfCitiesAndStudents = [cityNewYork, cityLosAngeles, cityChicago];
+    const arrayListOfCitiesAndStudents = [cityNewYork, cityLosAngeles, cityChicago];
     let layout = ``;
-    listOfCitiesAndStudents.forEach(function (city) {
-        layout += `<h1>Cidade: ${city.city}</h1>`;
-        // console.log('Cidade: ' + city.city)
-        // city.students().forEach(student => {
-        //     layout += `<p>Alunos que moram nesta cidade: ${student.name}</p>`
-        // })
-        // console.log(`Na cidade ${city.city} tem ${city.students().length} alunos.`)
-        layout += `<p>Na cidade ${city.city} tem ${city.students().length} alunos.</p>`;
+    arrayListOfCitiesAndStudents.forEach(function (city) {
+        layout += `
+        <p>A cidade de <b>${city.city}</b> possui <b>${city.students().length}</b> alunos.</p>
+        `;
     });
     const result = document.getElementById('result');
     result.innerHTML = layout;
     return layout;
 }
-//  - A média de idade dos alunos
 function averageAgeOfStudents() {
     let total = 0;
     students.forEach((student) => {
         total += student.age;
     });
     const layout = `
-    <h1> Este é o resultado da média de idade dos alunos: </h1>
-    <p> A média de idade dos alunos é ${total / students.length} </p>
+    <p> A média de idade dos alunos é de <b>${total / students.length}</b> anos.</p>
     `;
     const result = document.getElementById('result');
     result.innerHTML = layout;
     return layout;
 }
-//  - A porcentagem de alunos acima de 21 anos
 function studentsOver21Percent() {
     const studentsOver21 = students.filter(student => student.age > 21);
     const layout = `
-    <h1> A porcentagem de alunos acima de 21 anos: </h1>
-    <p> A porcentagem de alunos acima de 21 anos é de ${(studentsOver21.length * 100 / students.length).toFixed(0)}% </p>
+    <p> A porcentagem de alunos acima de 21 anos é de <b>${(studentsOver21.length * 100 / students.length).toFixed(2)}%</b></p>
     `;
     const result = document.getElementById('result');
     result.innerHTML = layout;
@@ -171,10 +163,13 @@ function listOfHobbies() {
     const listOfClubs = [hobbieSinging, hobbieReading, hobbieCoding, hobbieDancing, hobbieWriting, hobbieGaming];
     let layout = ``;
     listOfClubs.forEach(function (club) {
-        layout += `<h1>Clube: ${club.hobbie}</h1>`;
-        layout += `<p><b>Lista de alunos interessados:</b></p>`;
+        layout += `
+        <p>Lista de alunos interessados no clube: <b>${club.hobbie}</b></p>
+        `;
         club.students().forEach(student => {
-            layout += `<p>${student.name}</p>            `;
+            layout += `
+            <p><b>${student.name}</b></p>
+            `;
         });
     });
     const result = document.getElementById('result');
